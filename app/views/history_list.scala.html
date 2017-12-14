@@ -1,0 +1,22 @@
+@(datas: List[T_Usage_History])
+@import helper._
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>利用履歴検索結果</title>
+</head>
+<body>
+<table>
+@for(data <- datas) {
+    <tr>
+        <td>@data.customerId</td>
+        <td>@data.serviceId</td>
+        <td>@data.isDeleted</td>
+        <td>@data.createdAt</td>
+        <td>@data.updatedAt</td>
+    </tr>
+}
+</table>
+</body>
+</html>

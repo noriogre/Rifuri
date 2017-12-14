@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+		<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <title>POST JSON TEST</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        </head>
+        <body>
+                <p>JSONデータのPOST実験</p>
+                <button id="testbutton" class="pure-button">TestButton</button>
+                <div id="area"></div>
+                <script type="text/javascript">
+                        (function($){
+                          $('#testbutton').click(function(){
+                                var jsondata = { //送りたいJSONデータ
+                                        "customer_id": 10,
+                                        "service_id": 10,
+                                        "is_deleted": false,
+                                        "created_at": "2017/11/20 14:15:30",
+                                        "updated_at": "2017/11/20 14:15:30"
+                                };
+                                $.ajax({
+                                          url:"http://localhost:9000/insert_data",//先ほどのActionを指定
+                                          type:'POST',
+                                          data:JSON.stringify(jsondata),//JSON.stringifyを忘れない
+                                          success: function(data){
+                                        	  console.log(data);
+                                          },
+                                          dataType:'json',
+                                          contentType:'text/json'
+                            });
+                          });
+                        })(jQuery);
+                </script>
+        </body>
+</html>
